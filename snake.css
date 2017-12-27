@@ -24,3 +24,20 @@
   background-color: blue;
   border-radius: 50%;
 }
+
+#gameOverBox {
+  text-align: center;
+  visibility: hidden;
+  font-size: 40px;
+  margin-left: 600px;
+  margin-top: -400px;
+  width: 200px;
+  height: 100px;
+  background-color: white;
+  border: 1px solid #795548;
+}
+
+#restart {
+  font-size: 30px;
+  shape-outside: border-box;
+}
