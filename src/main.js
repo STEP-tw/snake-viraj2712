@@ -5,10 +5,18 @@ let numberOfCols=120;
 
 let animator=undefined;
 
+const isGameOver = function(head){
+  if(head.x == 120 || head.x == 0 || head.y == 60 || head.y == 0){
+    clearInterval(animator);
+    gameOverBox.style.visibility = "visible";
+  }
+}
+
 const animateSnake=function() {
   let oldHead=snake.getHead();
   let oldTail=snake.move();
   let head=snake.getHead();
+  isGameOver(head);
   paintBody(oldHead);
   unpaintSnake(oldTail);
   paintHead(head);
@@ -62,6 +70,10 @@ const startGame=function() {
   drawFood(food);
   addKeyListener();
   animator=setInterval(animateSnake,140);
+}
+
+const restartGame = function(){
+  window.location.reload();
 }
 
 window.onload=startGame;
