@@ -76,7 +76,7 @@ const startGame=function() {
   createFood(numberOfRows,numberOfCols);
   drawFood(food);
   addKeyListener();
-  animator=setInterval(animateSnake,70);
+  animator=setInterval(animateSnake,140);
 }
 
 const stopGame = function(){
