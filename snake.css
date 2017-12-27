@@ -29,8 +29,8 @@
   text-align: center;
   visibility: hidden;
   font-size: 40px;
-  margin-left: 600px;
-  margin-top: -400px;
+  margin-left: 550px;
+  margin-top: -340px;
   width: 200px;
   height: 100px;
   background-color: white;
@@ -40,4 +40,5 @@
 #restart {
   font-size: 30px;
   shape-outside: border-box;
+  background-color: lightgray;
 }
