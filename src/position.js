@@ -35,6 +35,10 @@ Position.prototype.turnRight=function() {
   return new Position(this.x,this.y,newDirection);
 }
 
+Position.prototype.isSameCoordInDiffDirAs=function(other) {
+  return this.isSameCoordAs(other) && this.direction != other.direction;
+}
+
 Position.prototype.isSameCoordAs=function(other) {
   return this.x==other.x && this.y==other.y;
 }

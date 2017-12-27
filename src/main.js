@@ -5,18 +5,25 @@ let numberOfCols=120;
 
 let animator=undefined;
 
-const isGameOver = function(head){
-  if(head.x == 120 || head.x == 0 || head.y == 60 || head.y == 0){
-    clearInterval(animator);
-    gameOverBox.style.visibility = "visible";
-  }
+const isHitToEdge = function(head){
+  return head.x == 119 || head.x == 0 || head.y == 59 || head.y == 0;
+}
+
+const hasEatenItself = function(snake,head){
+  return snake.getBody().some(function(other){
+    return head.isSameCoordInDiffDirAs(other);
+  });
+}
+
+const isGameOver = function(snake,head){
+  if(isHitToEdge(head) || hasEatenItself(snake,head)) stopGame();
 }
 
 const animateSnake=function() {
   let oldHead=snake.getHead();
   let oldTail=snake.move();
   let head=snake.getHead();
-  isGameOver(head);
+  isGameOver(snake,head);
   paintBody(oldHead);
   unpaintSnake(oldTail);
   paintHead(head);
@@ -69,7 +76,12 @@ const startGame=function() {
   createFood(numberOfRows,numberOfCols);
   drawFood(food);
   addKeyListener();
-  animator=setInterval(animateSnake,140);
+  animator=setInterval(animateSnake,70);
+}
+
+const stopGame = function(){
+  clearInterval(animator);
+  gameOverBox.style.visibility = "visible";
 }
 
 const restartGame = function(){
